@@ -4,6 +4,7 @@ var Game = Class.extend({
     height: 0, 
     
     // objects we have in the game 
+    spaceship: null, 
     entities: [], 
     
     // the game loop
@@ -21,6 +22,10 @@ var Game = Class.extend({
         
         this.spawnSpaceship();
         this.spawnAsteroids();
+        
+        window.addEventListener('keydown', function(evt) {
+            self.onKeyDown(evt);
+        }, true);        
     }, 
     
     draw: function() {
@@ -69,15 +74,36 @@ var Game = Class.extend({
     },
     
     doSpawnAsteroids: function() {
-        var ex = Math.floor(Math.random() * (this.width - 40));
-        var e = new Asteroid(this, ex + 20, 0); 
+        var ex = this.spaceship.getWidth()/2 + Math.floor(Math.random() * (this.width - this.spaceship.getWidth()));
+        var e = new Asteroid(this, ex, 0); 
         this.entities.push(e); 
         this.spawnAsteroids();
     },
     
     spawnSpaceship: function() {
-        var s = new Spaceship(this, this.width/2, this.height-60);
-        this.entities.push(s); 
+        this.spaceship = new Spaceship(this, this.width/2, this.height-60);
+        this.entities.push(this.spaceship); 
+    }, 
+    
+    spawnBlasterBolt: function() {
+        var x = this.spaceship.x; 
+        var y = this.spaceship.y - this.spaceship.getWidth()/2;
+        var bb = new BlasterBolt(this, x, y); 
+        this.entities.push(bb); 
+    },
+    
+    onKeyDown: function(evt) {
+        switch (evt.keyCode) {
+            case 37: 
+                this.spaceship.moveLeft(); 
+                break;
+            case 39: 
+                this.spaceship.moveRight(); 
+                break; 
+            case 32: 
+                this.spawnBlasterBolt(); 
+                break; 
+        }
     }
 });
 

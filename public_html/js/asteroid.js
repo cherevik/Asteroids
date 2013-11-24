@@ -27,6 +27,14 @@ var Asteroid = Entity.extend({
         ctx.rotate(this.angle);
         ctx.drawImage(this.image, -this.image.width/2, -this.image.height/2);
         ctx.restore();
+    }, 
+    
+    getWidth: function() {
+        return this.image ? this.image.width : 0; 
+    }, 
+    
+    getHeight: function() {
+        return this.image ? this.image.height : 0; 
     }
 });
 

@@ -1,5 +1,6 @@
 var Spaceship = Entity.extend({
     image: null, 
+    distance: 10,
     
     init: function(game, x, y) {
         this._super(game, x, y); 
@@ -14,8 +15,27 @@ var Spaceship = Entity.extend({
         ctx.translate(this.x, this.y);
         ctx.drawImage(this.image, -this.image.width/2, -this.image.height/2);
         ctx.restore();
-    }
+    }, 
     
+    moveLeft: function() {
+        if (this.x - this.distance - this.image.width/2 > 0) {
+            this.x = this.x - this.distance;
+        }
+    }, 
+    
+    moveRight: function() {
+        if (this.x + this.distance + this.image.width/2 < this.game.width) {
+            this.x = this.x + this.distance;
+        }
+    }, 
+    
+    getWidth: function() {
+        return this.image ? this.image.width : 0; 
+    }, 
+    
+    getHeight: function() {
+        return this.image ? this.image.height : 0; 
+    }
 });
 
 
