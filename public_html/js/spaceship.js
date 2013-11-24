@@ -2,11 +2,14 @@ var Spaceship = Entity.extend({
     image: null, 
     distance: 10,
     ammoCount: 25,
-    
+   
+        
     init: function(game, x, y) {
         this._super(game, x, y); 
         this.image = new Image();
         this.image.src = "img/spaceship.png";
+         var ammoElem = document.getElementById('ammoCount');
+        ammoElem.innerHTML = this.ammoCount;
       
     },
     
