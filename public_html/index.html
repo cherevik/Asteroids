@@ -13,10 +13,13 @@
         <script type="text/javascript">
             function play() {
                 new Game(document.getElementById("gameboard")); 
-            }
+            }          
         </script>
     </head>
     <body onload="play()">
+        <div style ="color:red;">
+            <p style="font-size: 36px;">Your ammo count is  <span id="ammoCount"></span></p>
+        </div>
         <canvas id="gameboard" width="480" height="640" style="display:block;width:480px;margin:20px auto;">
         </canvas> 
     </body>

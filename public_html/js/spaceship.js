@@ -1,11 +1,13 @@
 var Spaceship = Entity.extend({
     image: null, 
     distance: 10,
+    ammoCount: 25,
     
     init: function(game, x, y) {
         this._super(game, x, y); 
         this.image = new Image();
         this.image.src = "img/spaceship.png";
+      
     },
     
     draw: function() {
@@ -45,6 +47,16 @@ var Spaceship = Entity.extend({
     
     getHeight: function() {
         return this.image ? this.image.height : 0; 
+    }, 
+    
+    hasAmmo: function() {
+        return this.ammoCount > 0;
+    },
+    
+    useAmmo: function() {
+        this.ammoCount --;
+        var ammoElem = document.getElementById('ammoCount');
+        ammoElem.innerHTML = this.ammoCount;
     }
 });
 
