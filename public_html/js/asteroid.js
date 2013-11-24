@@ -50,6 +50,10 @@ var Asteroid = Entity.extend({
     explode: function() {
         this.image = this.explosion; 
         this.countdown = 8; 
+    },
+    
+    hasExploded: function() {
+        return this.image === this.explosion;
     }
     
 });
