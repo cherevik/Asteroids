@@ -102,7 +102,12 @@ var Game = Class.extend({
                 break; 
             case 32: 
                 this.spawnBlasterBolt(); 
-                break; 
+                break;
+            case 38:
+                this.spaceship.moveUp();
+                break;
+            case 40:
+                this.spaceship.moveDown();
         }
     }
 });

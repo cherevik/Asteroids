@@ -28,6 +28,16 @@ var Spaceship = Entity.extend({
             this.x = this.x + this.distance;
         }
     }, 
+    moveUp: function() {
+        if(this.y + this.distance + this.image.height/2 < this.game.height){
+            this.y = this.y - this.distance;
+        }
+    },
+    moveDown: function() {
+        if(this.y + this.distance + this.image.height/2 < this.game.height){
+            this.y = this.y + this.distance;
+        }
+    },
     
     getWidth: function() {
         return this.image ? this.image.width : 0; 
