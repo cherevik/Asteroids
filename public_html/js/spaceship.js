@@ -31,7 +31,7 @@ var Spaceship = Entity.extend({
         }
     }, 
     moveUp: function() {
-        if(this.y + this.distance + this.image.height/2 < this.game.height){
+        if(this.y - this.distance - this.image.height/2 > 0){
             this.y = this.y - this.distance;
         }
     },

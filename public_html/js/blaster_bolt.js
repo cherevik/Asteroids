@@ -21,7 +21,8 @@ var BlasterBolt = Entity.extend({
                 var hw = e.getWidth()/2; 
                 var hh = e.getHeight()/2;
                 if (this.x > e.x - hw && this.x < e.x + hw && 
-                    this.y < e.y + hh && this.y > e.y - hh) {
+                    this.y < e.y + hh && this.y > e.y - hh && 
+                    e.hasExploded() === false) {
                     // we have an impact 
                     e.explode(); 
                     this.deleted = true;
