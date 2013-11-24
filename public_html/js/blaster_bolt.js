@@ -15,7 +15,7 @@ var BlasterBolt = Entity.extend({
             // check if it hit something 
             for (var i = 0; i < this.game.entities.length; i ++) {
                 var e = this.game.entities[i]; 
-                if (e == this.game.spaceship || e == this) {
+                if (e == this) {
                     continue;
                 }
                 var hw = e.getWidth()/2; 

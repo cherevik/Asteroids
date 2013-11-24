@@ -87,7 +87,7 @@ var Game = Class.extend({
     
     spawnBlasterBolt: function() {
         var x = this.spaceship.x; 
-        var y = this.spaceship.y - this.spaceship.getWidth()/2;
+        var y = this.spaceship.y - this.spaceship.getHeight()/2;
         var bb = new BlasterBolt(this, x, y); 
         this.entities.push(bb); 
     },
