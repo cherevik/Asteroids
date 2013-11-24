@@ -52,7 +52,6 @@ var Asteroid = Entity.extend({
             this.image = this.explosion; 
             this.countdown = 8; 
         }
-
     },
     
     hasExploded: function() {
