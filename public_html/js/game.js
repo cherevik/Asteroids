@@ -42,11 +42,12 @@ var Game = Class.extend({
     }, 
     
     doGameLoop: function() {
-        
         for (var i = 0; i < this.entities.length; i++) {
             var e = this.entities[i];
             e.update(); 
         }
+
+        this.collideWith();
         
         var len = this.entities.length; 
         while (len --) {
@@ -90,6 +91,15 @@ var Game = Class.extend({
         var y = this.spaceship.y - this.spaceship.getHeight()/2;
         var bb = new BlasterBolt(this, x, y); 
         this.entities.push(bb); 
+    },
+    
+    collideWith: function() {
+        for(var i = 1; i < this.entities.length; i++){
+            if(this.entities[i].y > this.spaceship.y){
+                this.entities[i].explode();
+            }
+        }
+       
     },
     
     onKeyDown: function(evt) {

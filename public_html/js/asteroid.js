@@ -21,9 +21,9 @@ var Asteroid = Entity.extend({
         if (this.y > this.game.height) {
             this.deleted = true;
         }
-        if (this.image == this.explosion) {
+        if (this.image === this.explosion) {
             this.countdown = this.countdown - 1; 
-            if (this.countdown == 0) {
+            if (this.countdown === 0) {
                 this.deleted = true; 
             }
         }
@@ -48,8 +48,19 @@ var Asteroid = Entity.extend({
     },
     
     explode: function() {
+<<<<<<< HEAD
+        if (this.hasExploded() === false) {
+            this.image = this.explosion; 
+            this.countdown = 8; 
+        }
+=======
         this.image = this.explosion; 
         this.countdown = 8; 
+>>>>>>> 4e11f63f450625eb80326c4047dd3c3d5891957d
+    },
+    
+    hasExploded: function() {
+        return this.image === this.explosion;
     }
     
 });

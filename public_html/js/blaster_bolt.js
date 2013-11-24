@@ -15,13 +15,14 @@ var BlasterBolt = Entity.extend({
             // check if it hit something 
             for (var i = 0; i < this.game.entities.length; i ++) {
                 var e = this.game.entities[i]; 
-                if (e == this) {
+                if (e === this) {
                     continue;
                 }
                 var hw = e.getWidth()/2; 
                 var hh = e.getHeight()/2;
                 if (this.x > e.x - hw && this.x < e.x + hw && 
-                    this.y < e.y + hh && this.y > e.y - hh) {
+                    this.y < e.y + hh && this.y > e.y - hh && 
+                    e.hasExploded() === false) {
                     // we have an impact 
                     e.explode(); 
                     this.deleted = true;
