@@ -7,7 +7,7 @@ var BlasterBolt = Entity.extend({
     
     update: function() {
         this._super(); 
-        this.y = this.y - 2; 
+        this.y = this.y - 4; 
         if (this.y < 0) {
             // see if it is outside of the gameboard 
             this.deleted = true;
@@ -23,7 +23,7 @@ var BlasterBolt = Entity.extend({
                 if (this.x > e.x - hw && this.x < e.x + hw && 
                     this.y < e.y + hh && this.y > e.y - hh) {
                     // we have an impact 
-                    e.deleted = true; 
+                    e.explode(); 
                     this.deleted = true;
                 }
             }

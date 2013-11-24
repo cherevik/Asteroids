@@ -2,12 +2,16 @@ var Asteroid = Entity.extend({
     angle: 0,
     angleSpeed: 0.3,
     image: null, 
+    explosion: null, 
+    countdown: 0,
     
     init: function(game, x, y) {
         this._super(game, x, y); 
         this.angleSpeed = Math.random() * 0.3 - 0.15;
         this.image = new Image();
         this.image.src = "img/asteroid.png";
+        this.explosion = new Image(); 
+        this.explosion.src = "img/explosion.gif";
     },
     
     update: function() {
@@ -16,6 +20,12 @@ var Asteroid = Entity.extend({
         this.y = this.y + 1; 
         if (this.y > this.game.height) {
             this.deleted = true;
+        }
+        if (this.image == this.explosion) {
+            this.countdown = this.countdown - 1; 
+            if (this.countdown == 0) {
+                this.deleted = true; 
+            }
         }
     }, 
     
@@ -35,6 +45,12 @@ var Asteroid = Entity.extend({
     
     getHeight: function() {
         return this.image ? this.image.height : 0; 
+    },
+    
+    explode: function() {
+        this.image = this.explosion; 
+        this.countdown = 8; 
     }
+    
 });
 
