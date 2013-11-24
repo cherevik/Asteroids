@@ -86,10 +86,14 @@ var Game = Class.extend({
     }, 
     
     spawnBlasterBolt: function() {
-        var x = this.spaceship.x; 
-        var y = this.spaceship.y - this.spaceship.getHeight()/2;
-        var bb = new BlasterBolt(this, x, y); 
-        this.entities.push(bb); 
+       
+        if(this.spaceship.hasAmmo() > 0){
+            var x = this.spaceship.x; 
+            var y = this.spaceship.y - this.spaceship.getHeight()/2;
+            var bb = new BlasterBolt(this, x, y); 
+            this.entities.push(bb); 
+            this.spaceship.useAmmo();       
+        }
     },
     
     onKeyDown: function(evt) {
